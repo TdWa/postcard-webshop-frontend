@@ -1,8 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./ProductCard.css";
+import CategoriesAndTags from "./CategoriesAndTags";
+import "./ProductCard.scss";
 
-export default function ProductCard({ id, name, url, price, tags }) {
+export default function ProductCard({
+  id,
+  name,
+  url,
+  price,
+  tags,
+  categories,
+}) {
   return (
     <div className="productCard">
       <div className="imgContainer">
@@ -14,17 +22,11 @@ export default function ProductCard({ id, name, url, price, tags }) {
         <div className="textRow">
           <strong>{name}</strong>
         </div>
-        <div className="tagContainer">
-          {tags.map((tag) => (
-            <div key={tag} className="tag">
-              {tag}
-            </div>
-          ))}
-        </div>
+        <CategoriesAndTags categories={categories} tags={tags} />
         <div className="textRow">
           <div>€ {price.toFixed(2)}</div>
           <div>
-            Add to card <button>+</button>
+            Add to cart <button>+</button>
           </div>
         </div>
       </div>

@@ -1,0 +1,42 @@
+.productCard {
+  width: 300px;
+  margin-top: 20px;
+  background-color: rgb(29, 29, 29);
+  color: white;
+  margin: 15px;
+
+  .imgContainer {
+    height: 200px;
+    padding: 10px;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 150px;
+  }
+
+  .textRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    height: 20%;
+  }
+
+  button {
+    width: 20px;
+    height: 20px;
+  }
+
+  strong {
+    font-size: 20px;
+  }
+}
