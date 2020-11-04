@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CategoriesAndTags from "./CategoriesAndTags";
+import AddToCart from "./AddToCart";
 import "./ProductCard.scss";
 
 export default function ProductCard({
@@ -25,29 +26,9 @@ export default function ProductCard({
         <CategoriesAndTags categories={categories} tags={tags} />
         <div className="textRow">
           <div>€ {price.toFixed(2)}</div>
-          <div>
-            Add to cart <button>+</button>
-          </div>
+          <AddToCart />
         </div>
       </div>
     </div>
   );
 }
-
-/*
-
-{
-    id: 1,
-    name: "happy-birthday-cars",
-    url:
-      "http://jiskadewaard.com/wp-content/uploads/2019/02/Schermafbeelding-2019-02-15-om-11.37.08-723x1024.png",
-    price: 1.5,
-    tags: ["birthday", "all-ages"],
-  },
-
-      <Link to={`/post/${id}`}>
-        <p style={{ marginBottom: 3 }}>
-          <strong>{title}</strong>
-        </p>
-      </Link>
-*/

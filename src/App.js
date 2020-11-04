@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import "./main.scss";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/product/:id" component={ProductPage} />
         <Route path="/" component={HomePage} />
       </Switch>
+      <Footer />
     </div>
   );
 }

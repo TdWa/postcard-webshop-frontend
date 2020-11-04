@@ -1,17 +1,17 @@
 @import "../main.scss";
 
-.headerContainer {
+.footerContainer {
   background-color: $accent-color;
+  margin-top: 15px;
 }
 
-header {
+footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
 }
 
-header a {
-  text-decoration: none;
+footer a {
   color: black;
 }

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectProductById } from "../store/products/selectors";
 import CategoriesAndTags from "../components/CategoriesAndTags";
+import AddToCart from "../components/AddToCart";
 import "./ProductPage.scss";
 
 export default function ProductPage() {
@@ -30,7 +31,8 @@ export default function ProductPage() {
               <strong>Price:</strong> € {price.toFixed(2)}
             </div>
             <div className="cart">
-              Add to cart <button>+</button>
+              {" "}
+              <AddToCart />
             </div>
           </div>
         </div>
