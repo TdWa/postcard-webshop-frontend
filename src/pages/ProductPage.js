@@ -9,7 +9,7 @@ import "./ProductPage.scss";
 export default function ProductPage() {
   const { id } = useParams();
   const product = useSelector(selectProductById(Number(id)));
-  const { name, url, price, tags, categories } = product;
+  const { name, description, url, price, tags, categories } = product;
 
   return (
     <div className="page">
@@ -24,6 +24,10 @@ export default function ProductPage() {
             </div>
             <div>
               <CategoriesAndTags categories={categories} tags={tags} />
+            </div>
+            <div className="description">
+              <strong>Description: </strong>
+              {description}
             </div>
           </div>
           <div className="row">
