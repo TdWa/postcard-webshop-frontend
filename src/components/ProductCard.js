@@ -26,7 +26,7 @@ export default function ProductCard({
         <CategoriesAndTags categories={categories} tags={tags} />
         <div className="textRow">
           <div>€ {price.toFixed(2)}</div>
-          <AddToCart />
+          <AddToCart productId={id} />
         </div>
       </div>
     </div>

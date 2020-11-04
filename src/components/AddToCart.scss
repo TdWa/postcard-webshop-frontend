@@ -1,6 +1,10 @@
 .addToCart {
   button {
-    width: 20px;
+    min-width: 20px;
     height: 20px;
+  }
+
+  input {
+    width: 40px;
   }
 }

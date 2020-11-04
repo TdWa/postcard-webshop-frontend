@@ -268,9 +268,9 @@ const initialState = [
     url:
       "http://jiskadewaard.com/wp-content/uploads/2019/02/Schermafbeelding-2019-02-27-om-12.54.06-731x1024.png",
     price: 1.5,
-    tags: ["illness"],
+    tags: ["illness", "Dutch"],
     categories: ["wishes"],
-    popularity: 433,
+    popularity: 233,
   },
   {
     id: 29,

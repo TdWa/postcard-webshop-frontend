@@ -5,6 +5,7 @@ import {
   selectProductsByCategory,
   selectProductCategories,
 } from "../store/products/selectors";
+import { selectCartByUserId } from "../store/users/selectors";
 import "./HomePage.scss";
 
 export default function HomePage() {
@@ -12,6 +13,7 @@ export default function HomePage() {
   const [sort, setSort] = useState("popularity (desc)");
   const products = useSelector(selectProductsByCategory(categoryFilter));
   const categories = useSelector(selectProductCategories);
+  const cart = useSelector(selectCartByUserId(1));
 
   return (
     <div className="page">
@@ -41,6 +43,7 @@ export default function HomePage() {
           <option value="popularity (asc)">popularity (asc)</option>
           <option value="price (desc)">price (desc)</option>
           <option value="price (asc)">price (asc)</option>
+          <option value="currently in cart">currently in cart</option>
         </select>
       </div>
       <br></br>
@@ -56,6 +59,21 @@ export default function HomePage() {
                 return b.price - a.price;
               case "price (asc)":
                 return a.price - b.price;
+              case "currently in cart": {
+                const foundA = cart.find(
+                  (product) => product.productId === a.id
+                );
+                const foundB = cart.find(
+                  (product) => product.productId === b.id
+                );
+                if (foundA && !foundB) {
+                  return -1;
+                } else if (!foundA && foundB) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              }
               default:
                 return 0;
             }
@@ -67,35 +85,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-/*
- <label htmlFor="searchType">Search by:</label>
-<select
-  onChange={(e) => setSearchType(e.target.value)}
-  name="select"
-  id="searchType"
->
-  <option value="name">Name</option>
-  <option value="ingredient">Ingredient</option>
-</select>
-
-
-<h2>
-    Who likes{" "}
-    <select
-      defaultValue={"Resource..."}
-      onChange={(e) => setResource(e.target.value)}
-    >
-      <option disabled>Resource...</option>
-      {resources.map((resource) => {
-        return (
-          <option key={resource.id} value={resource.name}>
-            {resource.name}
-          </option>
-        );
-      })}
-    </select>
-    &nbsp;?
-  </h2>
-
-*/

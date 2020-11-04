@@ -32,7 +32,7 @@ export default function ProductPage() {
             </div>
             <div className="cart">
               {" "}
-              <AddToCart />
+              <AddToCart productId={Number(id)} />
             </div>
           </div>
         </div>
