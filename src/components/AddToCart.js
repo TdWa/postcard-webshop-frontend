@@ -22,23 +22,25 @@ export default function AddToCart({ productId }) {
           max={999}
           value={amount}
           onChange={(e) => {
-            setAmount(Number(e.target.value));
             if (e.target.value > 999) {
               setAmount(999);
+            } else {
+              setAmount(Number(e.target.value));
             }
           }}
         ></input>{" "}
       </div>
       <div className="col4">
-        <button
-          onClick={() => {
-            if (amount === "") return;
-            dispatch(changeProductAmountInCart(1, productId, amount));
-            setAmount("");
-          }}
-        >
-          OK
-        </button>
+        {amount !== "" && (
+          <button
+            onClick={() => {
+              dispatch(changeProductAmountInCart(1, productId, amount));
+              setAmount("");
+            }}
+          >
+            OK
+          </button>
+        )}
       </div>
     </div>
   );

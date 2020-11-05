@@ -11,11 +11,10 @@ export default function CartPage() {
   const cart = useSelector(selectCartByUserId(1));
   const products = useSelector(selectProductsByCart(cart));
 
-  let total = 0;
-  products.forEach((product) => {
+  const total = products.reduce((accumulator, product) => {
     const amount = cart.find((p) => p.productId === product.id).amount;
-    total += product.price * amount;
-  });
+    return product.price * amount + accumulator;
+  }, 0);
 
   return (
     <div className="page">

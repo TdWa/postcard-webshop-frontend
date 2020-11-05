@@ -15,6 +15,34 @@ export default function HomePage() {
   const categories = useSelector(selectProductCategories);
   const cart = useSelector(selectCartByUserId(1));
 
+  products.sort((a, b) => {
+    switch (sortMethod) {
+      case "popularity (desc)":
+        return b.popularity - a.popularity;
+      case "popularity (asc)":
+        return a.popularity - b.popularity;
+      case "price (desc)":
+        return b.price - a.price;
+      case "price (asc)":
+        return a.price - b.price;
+      case "currently in cart": {
+        const foundA = cart.find((product) => product.productId === a.id);
+        const amountA = foundA ? foundA.amount : 0;
+        const foundB = cart.find((product) => product.productId === b.id);
+        const amountB = foundB ? foundB.amount : 0;
+        if (amountA > amountB) {
+          return -1;
+        } else if (amountA < amountB) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+      default:
+        return 0;
+    }
+  });
+
   return (
     <div className="page">
       <br></br>
@@ -48,41 +76,9 @@ export default function HomePage() {
       </div>
       <br></br>
       <div id="productContainer">
-        {products
-          .sort((a, b) => {
-            switch (sortMethod) {
-              case "popularity (desc)":
-                return b.popularity - a.popularity;
-              case "popularity (asc)":
-                return a.popularity - b.popularity;
-              case "price (desc)":
-                return b.price - a.price;
-              case "price (asc)":
-                return a.price - b.price;
-              case "currently in cart": {
-                const foundA = cart.find(
-                  (product) => product.productId === a.id
-                );
-                const amountA = foundA ? foundA.amount : 0;
-                const foundB = cart.find(
-                  (product) => product.productId === b.id
-                );
-                const amountB = foundB ? foundB.amount : 0;
-                if (amountA > amountB) {
-                  return -1;
-                } else if (amountA < amountB) {
-                  return 1;
-                } else {
-                  return 0;
-                }
-              }
-              default:
-                return 0;
-            }
-          })
-          .map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
+        {products.map((product) => (
+          <ProductCard key={product.id} {...product} />
+        ))}
       </div>
     </div>
   );

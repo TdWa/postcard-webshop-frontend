@@ -1,4 +1,11 @@
-export const addProduct = (name, description, url, price, tags, categories) => {
+export const addProduct = ({
+  name,
+  description,
+  url,
+  price,
+  tags,
+  categories,
+}) => {
   return {
     type: "ADD_PRODUCT",
     payload: {

@@ -5,41 +5,27 @@ import { selectAllProducts } from "../store/products/selectors";
 import ProductCard from "../components/ProductCard";
 import "./AdminPage.scss";
 
+const formInitialState = {
+  name: "",
+  description: "",
+  url: "",
+  price: 0,
+  tags: [],
+  categories: [],
+};
+
 export default function AdminPage() {
   const dispatch = useDispatch();
-  const [form, setForm] = useState({
-    name: "",
-    description: "",
-    url: "",
-    price: 0,
-    tags: [],
-    categories: [],
-  });
+  const [form, setForm] = useState(formInitialState);
   const [idToRemove, setIdToRemove] = useState("");
   const products = useSelector(selectAllProducts);
 
   const submitAddProductForm = (event) => {
     event.preventDefault();
 
-    dispatch(
-      addProduct(
-        form.name,
-        form.description,
-        form.url,
-        Number(form.price),
-        form.tags,
-        form.categories
-      )
-    );
+    dispatch(addProduct({ ...form, price: Number(form.price) }));
 
-    setForm({
-      name: "",
-      description: "",
-      url: "",
-      price: 0,
-      tags: [],
-      categories: [],
-    });
+    setForm(formInitialState);
   };
 
   return (
