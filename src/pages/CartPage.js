@@ -43,10 +43,3 @@ export default function CartPage() {
     </div>
   );
 }
-
-/*
-As a customer, I want to be able to view my shopping cart, which products are in it, 
-how many times, and what total price that adds up to. 
-I also want to be able to adjust the number of items in that page, 
-and to be able to empty the whole cart.
-*/

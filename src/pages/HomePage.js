@@ -10,7 +10,7 @@ import "./HomePage.scss";
 
 export default function HomePage() {
   const [categoryFilter, setCategoryFilter] = useState("all categories");
-  const [sort, setSort] = useState("popularity (desc)");
+  const [sortMethod, setSortMethod] = useState("popularity (desc)");
   const products = useSelector(selectProductsByCategory(categoryFilter));
   const categories = useSelector(selectProductCategories);
   const cart = useSelector(selectCartByUserId(1));
@@ -35,7 +35,7 @@ export default function HomePage() {
       <div id="sortContainer">
         <label htmlFor="sortType">Sort Postcards: </label>
         <select
-          onChange={(e) => setSort(e.target.value)}
+          onChange={(e) => setSortMethod(e.target.value)}
           name="sort"
           id="sortType"
         >
@@ -50,7 +50,7 @@ export default function HomePage() {
       <div id="productContainer">
         {products
           .sort((a, b) => {
-            switch (sort) {
+            switch (sortMethod) {
               case "popularity (desc)":
                 return b.popularity - a.popularity;
               case "popularity (asc)":
