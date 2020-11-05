@@ -383,6 +383,12 @@ export default function productsReducer(
   { type, payload }
 ) {
   switch (type) {
+    case "ADD_PRODUCT": // the payload will be a product object
+      return [...state, { ...payload }];
+    case "REMOVE_PRODUCT": // the payload will be a number that should be a product id
+      return state.filter((product) => {
+        return product.id !== payload;
+      });
     default:
       return state;
   }
