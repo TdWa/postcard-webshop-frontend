@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 150px;
+    height: 190px;
   }
 
   .textRow {
@@ -28,7 +28,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
-    height: 20%;
+    height: 30px;
+    // background-color: pink;
   }
 
   strong {

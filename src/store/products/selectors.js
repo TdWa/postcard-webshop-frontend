@@ -15,6 +15,14 @@ export const selectProductCategories = (state) => {
 export const selectProductById = (id) => (state) =>
   state.products.find((p) => p.id === id);
 
+export const selectProductsByCart = (cart) => (state) => {
+  const products = [];
+  cart.forEach((product) =>
+    products.push(state.products.find((p) => p.id === product.productId))
+  );
+  return products;
+};
+
 export const selectProductsByCategory = (category) => (state) =>
   category === "all categories"
     ? state.products

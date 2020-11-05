@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectProductInCart } from "../store/users/selectors";
-import {
-  removeProductFromCart,
-  addProductToCart,
-} from "../store/users/actions";
+import { changeProductAmountInCart } from "../store/users/actions";
 import "./AddToCart.scss";
 
 export default function AddToCart({ productId }) {
@@ -14,36 +11,35 @@ export default function AddToCart({ productId }) {
 
   return (
     <div className="addToCart">
-      in cart: {productInCart ? productInCart.amount : 0}{" "}
-      <button
-        onClick={() => {
-          dispatch(removeProductFromCart(1, productId));
-        }}
-      >
-        reset
-      </button>
-      {" add: "}
-      <input
-        type="number"
-        placeholder={0}
-        min={0}
-        max={999}
-        value={amount}
-        onChange={(e) => {
-          setAmount(Number(e.target.value));
-          if (e.target.value > 999) {
-            setAmount(999);
-          }
-        }}
-      ></input>{" "}
-      <button
-        onClick={() => {
-          dispatch(addProductToCart(1, productId, amount));
-          setAmount("");
-        }}
-      >
-        +
-      </button>
+      <div className="col1">
+        In cart: {productInCart ? productInCart.amount : 0}
+      </div>
+      <div className="col2">change to:</div>
+      <div className="col3">
+        <input
+          type="number"
+          min={0}
+          max={999}
+          value={amount}
+          onChange={(e) => {
+            setAmount(Number(e.target.value));
+            if (e.target.value > 999) {
+              setAmount(999);
+            }
+          }}
+        ></input>{" "}
+      </div>
+      <div className="col4">
+        <button
+          onClick={() => {
+            if (amount === "") return;
+            dispatch(changeProductAmountInCart(1, productId, amount));
+            setAmount("");
+          }}
+        >
+          OK
+        </button>
+      </div>
     </div>
   );
 }

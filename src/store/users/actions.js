@@ -5,9 +5,9 @@ export function removeProductFromCart(userId, productId) {
   };
 }
 
-export function addProductToCart(userId, productId, amount) {
+export function changeProductAmountInCart(userId, productId, amount) {
   return {
-    type: "ADD_PRODUCT_TO_CART",
+    type: "CHANGE_PRODUCTAMOUNT_IN_CART",
     payload: { userId, productId, amount },
   };
 }

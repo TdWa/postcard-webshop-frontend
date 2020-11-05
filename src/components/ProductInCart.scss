@@ -1,0 +1,21 @@
+.productInCartContainer {
+  display: flex;
+  margin: 10px 0;
+
+  .colA {
+    width: 270px;
+  }
+  .colB {
+    width: 250px;
+  }
+  .colC {
+    width: 95px;
+  }
+  .colD {
+    width: 100px;
+  }
+
+  button {
+    width: 25px;
+  }
+}

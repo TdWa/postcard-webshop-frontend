@@ -1,0 +1,30 @@
+@import "../main.scss";
+
+#productInCartContainer {
+  hr {
+    border: 1px solid black;
+    max-width: 700px;
+  }
+}
+
+#buyButton {
+  background-color: $accent-color;
+}
+
+#belowLine {
+  display: flex;
+  margin-top: 10px;
+  width: 715px;
+
+  .colA {
+    width: 270px;
+  }
+
+  .colB {
+    width: 250px;
+  }
+
+  .colC {
+    width: 95px;
+  }
+}

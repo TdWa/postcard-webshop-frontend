@@ -24,8 +24,8 @@ export default function ProductCard({
           <strong>{name}</strong>
         </div>
         <CategoriesAndTags categories={categories} tags={tags} />
+        <div className="textRow">€ {price.toFixed(2)}</div>
         <div className="textRow">
-          <div>€ {price.toFixed(2)}</div>
           <AddToCart productId={id} />
         </div>
       </div>

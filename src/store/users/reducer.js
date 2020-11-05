@@ -10,13 +10,15 @@ const initialState = [
       { productId: 1, amount: 5 },
       { productId: 2, amount: 1 },
       { productId: 32, amount: 10 },
+      { productId: 14, amount: 1 },
+      { productId: 21, amount: 3 },
     ],
   },
 ];
 
 export default function usersReducer(state = initialState, { type, payload }) {
   switch (type) {
-    case "ADD_PRODUCT_TO_CART": {
+    case "CHANGE_PRODUCTAMOUNT_IN_CART": {
       return state.map((user) => {
         if (user.id !== payload.userId) {
           // if it is not the user's cart, just return the user
@@ -28,23 +30,46 @@ export default function usersReducer(state = initialState, { type, payload }) {
         );
 
         if (!productInCart) {
-          // if there was no such product in the cart yet, add the payload product
+          // if there was NOT such product in the cart yet...
+          if (payload.amount === 0) {
+            // if the payload amount was 0 don't change anything
+            return user;
+          }
+
           return {
+            // else add the payload to the user's cart
             ...user,
             cart: [
               ...user.cart,
               { productId: payload.productId, amount: payload.amount },
             ],
           };
-        } // else increase the product with the payload amount
+        }
+        // if there WAS such a product then...
+        if (payload.amount === 0) {
+          // if the payload amount was 0 remove the product from the cart
+          return {
+            ...user,
+            cart: user.cart.filter(
+              (product) => product.productId !== payload.productId
+            ),
+          };
+        }
 
+        // else change the product amount to the payload amount
         return {
           ...user,
           cart: user.cart.map((product) => {
             if (product.productId !== payload.productId) {
               return product;
             }
-            return { ...product, amount: product.amount + payload.amount };
+            return {
+              ...product,
+              amount:
+                payload.amount > 999 // max 999
+                  ? 999
+                  : payload.amount,
+            };
           }),
         };
       });
