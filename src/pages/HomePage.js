@@ -63,12 +63,14 @@ export default function HomePage() {
                 const foundA = cart.find(
                   (product) => product.productId === a.id
                 );
+                const amountA = foundA ? foundA.amount : 0;
                 const foundB = cart.find(
                   (product) => product.productId === b.id
                 );
-                if (foundA && !foundB) {
+                const amountB = foundB ? foundB.amount : 0;
+                if (amountA > amountB) {
                   return -1;
-                } else if (!foundA && foundB) {
+                } else if (amountA < amountB) {
                   return 1;
                 } else {
                   return 0;
