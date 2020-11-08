@@ -8,11 +8,14 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./main.scss";
 
+import TestPage from "./pages/TestPage";
+
 function App() {
   return (
     <div>
       <Header />
       <Switch>
+        <Route path="/test" component={TestPage} />
         <Route path="/admin" component={AdminPage} />
         <Route path="/cart" component={CartPage} />
         <Route path="/product/:id" component={ProductPage} />
