@@ -8,20 +8,29 @@ const userLoggedIn = (token, profile) => {
   };
 };
 
+const setError = (error) => {
+  return {
+    type: "SET_ERROR",
+    payload: error,
+  };
+};
+
 export function login(email, password) {
   return async function thunk(dispatch, getState) {
-    console.log(
-      "TODO: change hardcoded kelley to email and pw from form",
-      email,
-      password
-    );
     try {
-      const loginResponse = await axios.post(`${API_URL}/login`, {
-        email: "kelley@codaisseur.com",
-        password: "abcd",
-      });
+      const loginResponse = await axios.post(
+        `${API_URL}/login`,
+        {
+          email,
+          password,
+        },
+        { validateStatus: false }
+      );
       const token = loginResponse.data.jwt;
-
+      if (!token) {
+        dispatch(setError(loginResponse.data));
+        return;
+      }
       const userProfileResponse = await axios.get(`${API_URL}/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -29,6 +38,7 @@ export function login(email, password) {
       localStorage.setItem("token", token);
     } catch (e) {
       console.log(e.message);
+      console.log(e.response.request.response);
     }
   };
 }

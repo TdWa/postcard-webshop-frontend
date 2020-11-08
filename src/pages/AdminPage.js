@@ -65,7 +65,7 @@ export default function AdminPage() {
 
         <div className="row">
           <div className="colOne">
-            <label htmlFor="description">Image URL:</label>
+            <label htmlFor="url">Image URL:</label>
           </div>
           <div className="colTwo">
             <input
@@ -80,7 +80,7 @@ export default function AdminPage() {
 
         <div className="row">
           <div className="colOne">
-            <label htmlFor="description">Price:</label>
+            <label htmlFor="price">Price:</label>
           </div>
           <div className="colTwo">
             <input

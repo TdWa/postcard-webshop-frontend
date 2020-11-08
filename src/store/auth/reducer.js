@@ -1,10 +1,17 @@
 const initialState = {
-  user: null, // the logged-in user
+  user: null,
   accessToken: null,
+  error: "",
 };
 
 export default function authReducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "SET_ERROR": {
+      return {
+        ...state,
+        error: payload,
+      };
+    }
     case "LOGOUT": {
       return initialState;
     }

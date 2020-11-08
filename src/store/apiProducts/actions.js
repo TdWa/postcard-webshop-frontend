@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const startLoading = () => {
+const startLoading = () => {
   return { type: "START_LOADING" };
 };
 
-export const fetch10APIProducts = ({ rows, count }) => {
+const fetch10APIProducts = ({ rows, count }) => {
   return {
     type: "FETCH10",
     payload: {
@@ -14,7 +14,7 @@ export const fetch10APIProducts = ({ rows, count }) => {
   };
 };
 
-export const setFetchError = (error) => {
+const setFetchError = (error) => {
   return {
     type: "FETCH_ERROR",
     payload: error,
