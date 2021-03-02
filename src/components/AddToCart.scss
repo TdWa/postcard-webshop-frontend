@@ -1,0 +1,25 @@
+.addToCart {
+  display: flex;
+
+  button {
+    min-width: 25px;
+    height: 20px;
+  }
+
+  input {
+    width: 40px;
+  }
+
+  .col1 {
+    width: 85px;
+  }
+  .col2 {
+    width: 70px;
+  }
+  .col3 {
+    width: 48px;
+  }
+  .col4 {
+    width: 25px;
+  }
+}

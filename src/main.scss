@@ -1,0 +1,22 @@
+$accent-color: #ffec46;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 640px;
+}
+
+.page,
+header,
+footer {
+  max-width: 990px;
+  min-width: 640px;
+  margin: 0 auto;
+}
+
+.page {
+  min-height: calc(100vh - 130px);
+}

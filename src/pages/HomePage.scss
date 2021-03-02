@@ -1,0 +1,14 @@
+#productContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#filterContainer,
+#sortContainer {
+  label,
+  select {
+    display: inline-block;
+    width: 130px;
+    height: 20px;
+  }
+}

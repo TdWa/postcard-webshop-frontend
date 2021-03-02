@@ -1,0 +1,17 @@
+@import "../main.scss";
+
+.footerContainer {
+  background-color: $accent-color;
+  margin-top: 15px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+footer a {
+  color: black;
+}
